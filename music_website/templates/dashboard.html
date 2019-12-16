@@ -1,10 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'base.html' %}
 
-</body>
-</html>
+{% block page_name%}Dashboard{% endblock %}
+
+{% block content %}
+<div class="container music-feed">
+    {% for sample in sample_list %}
+
+    <div class="card" style="width: 80%;">
+      <h5 class="card-header">{{ sample.title }}</h5>
+      <div class="card-body">
+        <h5 class="card-title">Description: {{ sample.description }}</h5>
+          <p class="card-text">ID Num: {{ sample.id }}</p>
+        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+          <audio controls style="width: 600px" class="card-text">
+            <source src="static/Fast-drum-loop-140-bpm.wav" type="audio/wav">
+        </audio><br>
+        <a href="#" class="btn btn-primary">{{ sample.path }} </a>
+      </div>
+    </div>
+    <br>
+    {% endfor %}
+</div>
+{% endblock %}
