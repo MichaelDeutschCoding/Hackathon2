@@ -1,14 +1,15 @@
 body,html{
     height: 100%;
-    background-image: url(images/empty2.jpg);
+    background-color: black;
  
     
     
 }
 .img{
-    position: absolute;
+    margin-left: 25%;
+
     
-    width: 100%;
+
 
 }
 .navbar{
@@ -25,24 +26,25 @@ body,html{
 
 .centered-form{
    margin-top: 25%;
+
+   width: 600px;
+   margin-left: 20%;
+
   
 }
 
 .centered-form .panel{
+
+width:600px;
+margin: 0;
    
 	
 }
 .container{
     position: relative;
-   
-  
-  
     color: #ffc107;
     text-align: center;
     font-family: 'Londrina Solid', cursive;
-  
-    
-
 }
 .reg_btn{
     background-color: #ffc107;
