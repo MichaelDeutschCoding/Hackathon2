@@ -10,6 +10,8 @@ class LoginForm(FlaskForm):
 
 
 class RegisterForm(FlaskForm):
-    email = StringField('email', validators=[InputRequired(), Email(message='Invalid email'), Length(max=50)])
     username = StringField('username', validators=[InputRequired(), Length(min=4, max=15)])
+    email = StringField('email', validators=[InputRequired(), Email(message='Invalid email'), Length(max=50)])
     password = PasswordField('password', validators=[InputRequired(), Length(min=8, max=80)])
+    first_name = StringField('first name', validators=[InputRequired(), Length(min=4, max=15)])
+    last_name = StringField('last name', validators=[InputRequired(), Length(min=4, max=15)])

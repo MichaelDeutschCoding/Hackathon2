@@ -1,10 +1,25 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends "base.html" %}
 
-</body>
-</html>
+{% block page_name %}Register{% endblock %}
+
+{% block content %}
+<br/><br/><br/><br/><br/><br/><br/>
+<form action="/register" method="POST" class="form-inline my-2 my-lg-0" style="display: block">
+    {{ register_form.hidden_tag() }}
+    {{ register_form.username.label }} {{ register_form.username(size=20) }}
+    {{ register_form.email.label }} {{ register_form.email(size=20) }}<br/>
+    {{ register_form.password.label }} {{ register_form.password(size=20) }}<br/>
+    {{ register_form.first_name.label }} {{ register_form.first_name(size=20) }}<br/>
+    {{ register_form.last_name.label }} {{ register_form.last_name(size=20) }}<br/>
+  <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Register</button>
+</form>
+{% with messages = get_flashed_messages(category_filter=["error"]) %}
+  {% if messages %}
+    <ul class=flashes>
+    {% for message in messages %}
+      <li>{{ message }}</li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
+{% endblock %}
