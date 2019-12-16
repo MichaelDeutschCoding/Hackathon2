@@ -10,6 +10,14 @@ Login
 {% endblock %}
 
 {% block content %}
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    {% for message in messages %}
+<h5 style="text-align: center;"><strong>Error:</strong> {{ message }}</h5>
+    {% endfor %}
+  {% endif %}
+{% endwith %}
+
     <div class="container">
 
       <form class="form-signin" method="POST">

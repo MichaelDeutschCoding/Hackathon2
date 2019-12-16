@@ -27,6 +27,7 @@ class Tag(db.Model):
     def __repr__(self):
         return self.name
 
+
 class Comment(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     sample_id = db.Column(db.Integer, db.ForeignKey('sample.id'))

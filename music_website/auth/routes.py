@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, redirect, url_for, request
+from flask import Blueprint, render_template, redirect, url_for, request, flash
 from flask_login import login_user, login_required, logout_user, current_user
 from werkzeug.security import generate_password_hash, check_password_hash
 from music_website.auth.forms import LoginForm, RegisterForm
@@ -24,7 +24,7 @@ def login():
             if check_password_hash(user.password_hashed, form.password.data):
                 login_user(user, remember=form.remember.data)
                 return redirect(url_for('music.dashboard'))
-
+        flash('Incorrect username or password.')
     return render_template('login.html', login_form=form)
 
 

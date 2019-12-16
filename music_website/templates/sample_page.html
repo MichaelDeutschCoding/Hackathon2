@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block page_name %}Sample{% endblock %}
+
+
+{% block content %}
+
+<a href="{{url_for('music.dashboard')}}">Back</a>
+
+
+<h2>{{ sample.title }}</h2>
+<h4>Description: {{ sample.description }}</h4>
+<h5>Added by user: {{owner.username}}</h5>
+<p>TAGS: {{ sample.tags|join(', ', attribute='name') }}</p>
+          <audio controls style="width: 600px">
+            <source src="{{ sample.path }}" type="audio/wav">
+        </audio><br>
+        <a href="#" class="btn btn-primary">{{ sample.path }} </a>
+
+{% for author, text in comment_tuples %}
+<h6>{{ author }}</h6>
+<p>{{ text }}</p>
+
+{% endfor %}
+{% endblock %}

@@ -1,5 +1,7 @@
 from flask import Blueprint, render_template, redirect, url_for, flash
 from flask_login import current_user, login_required
+
+from music_website.auth.models import User
 from music_website.database import session_scope
 from music_website.music.forms import AddSampleForm, SearchByTagForm
 from music_website.music.models import Sample, Tag
@@ -50,3 +52,19 @@ def search(tag):
         return redirect(url_for('music.dashboard'))
     sample_list = tag_obj.samples
     return render_template('search.html', sample_list=sample_list)
+
+
+@music_routes.route('/sample/<sample_id>')
+# @login_required
+def sample_page(sample_id):
+    sample = Sample.query.filter_by(id=sample_id).first()
+    if not sample:
+        flash(f"No sample with the id: {sample_id}")
+        return redirect(url_for('music.dashboard'))
+    owner = User.query.filter_by(id=sample.user_id).first()
+    comment_tuples = [(User.query.filter_by(id=c.author_id).one().username, c.text)
+                      for c in sample.comments]
+    return render_template('sample_page.html',
+                           sample=sample,
+                           owner=owner,
+                           comment_tuples = comment_tuples)
