@@ -1,17 +1,16 @@
-
-
 body{
     background-color: rgb(86, 87, 87);
 }
 .navbar{
-    color:#ffffff ;
-    background-color: rgba(0, 0, 0, 0.897) ;
+    color:#ffffff;
+    background-color: rgba(0, 0, 0, 0.897);
     font: 35px;
     font-family: 'Londrina Solid', cursive;
 }
 .nav-link{
     color: #ffc107 !important;
 }
+
 .back {
     max-width:100%;
     height:auto;
@@ -24,25 +23,23 @@ body{
     z-index: 1;
     font: 76px;
     top: 100px; 
-    left: 30%; 
+    left: 50%;
     width: 600px;
     height: 600px;
     text-align: center;
 }
 #button_sign{
-    position: absolute;
     z-index: 1;
     font: 76px;
     top: 675px; 
-    left: 43%; 
+    left: 37%;
     text-align: center  ;
 }
 #button_log{
-    position: absolute;
     z-index: 1;
     font: 76px;
     top: 675px; 
-    left: 53%; 
+    left: 48%;
     text-align: center  ;
     width: 83px;
     height: 38px;
