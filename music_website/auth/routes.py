@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, redirect, url_for
+from flask import Blueprint, render_template, redirect, url_for, request
 from flask_login import login_user, login_required, logout_user, current_user
 from werkzeug.security import generate_password_hash, check_password_hash
 from music_website.auth.forms import LoginForm, RegisterForm
@@ -17,23 +17,23 @@ def load_user(user_id):
 
 @auth_routes.route('/login', methods=['GET', 'POST'])
 def login():
-    form = LoginForm()
+    form = LoginForm(request.form)
 
     if form.validate_on_submit():
         user = User.query.filter_by(username=form.username.data).first()
         if user:
             if check_password_hash(user.password, form.password.data):
                 login_user(user, remember=form.remember.data)
-                return redirect(url_for('dashboard'))
+                return redirect(url_for('music.dashboard'))
 
         return '<h1>Invalid username or password</h1>'
 
-    return render_template('login.html', form=form)
+    return render_template('login.html', login_form=form)
 
 
 @auth_routes.route('/register', methods=['GET', 'POST'])
 def signup():
-    form = RegisterForm()
+    form = RegisterForm(request.form)
 
     if form.validate_on_submit():
         repo = UserRepository()
@@ -42,14 +42,15 @@ def signup():
                       form.password.data,
                       form.first_name.data,
                       form.last_name.data)
-        # should redirect to dashboard
-        return '<h1>New user has been created!</h1>'
+        return redirect(url_for('music.dashboard'))
+    else:
+        print(form.errors)
 
     return render_template('register.html', register_form=form)
 
 
 @auth_routes.route('/logout')
-# @login_required
+@login_required
 def logout():
     logout_user()
     return redirect(url_for('index'))
