@@ -1,9 +1,10 @@
 from music_website import db
 
-sample_tags = db.Table('sample_tags',
-                       db.Column('sample_id', db.Integer, db.ForeignKey('sample.id'), primary_key=True),
-                       db.Column('tag_name', db.String, db.ForeignKey('tag.name'), primary_key=True)
-                       )
+sample_tags = db.Table(
+        'sample_tags',
+        db.Column('sample_id', db.Integer, db.ForeignKey('sample.id'), primary_key=True),
+        db.Column('tag_name', db.String, db.ForeignKey('tag.name'), primary_key=True)
+    )
 
 
 class Sample(db.Model):
@@ -15,12 +16,13 @@ class Sample(db.Model):
     tags = db.relationship('Tag',
                            secondary=sample_tags,
                            lazy='subquery',
-                           backref=db.backref('samples', lazy=True))
+                           backref=db.backref('sample', lazy=True))
     comments = db.relationship('Comment', backref='sample', lazy=True)
 
 
 class Tag(db.Model):
     name = db.Column(db.String(32), primary_key=True)
+    samples = db.relationship('Sample', secondary=sample_tags)
 
 class Comment(db.Model):
     id = db.Column(db.Integer, primary_key=True)

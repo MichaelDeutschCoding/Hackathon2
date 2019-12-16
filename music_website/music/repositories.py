@@ -1,21 +1,16 @@
-from flask import session
-
 from music_website.music.models import Sample, Tag
-from sqlalchemy.dialects.postgresql import insert
-
 
 class SampleRepository:
     def __init__(self, session):
         self.session = session
 
     def add_new(self, title, path, description, tags, current_user):
-        current_user = current_user
         sample = Sample(
             title=title,
             path=path,
             description=description,
             tags=tags,
-            user_id=current_user
+            user_id=current_user.id
         )
         self.session.add(sample)
 
@@ -25,6 +20,11 @@ class TagRepository:
         self.session = session
 
     def add_tags(self, tags):
-        stmt = insert('tag').values(tags)
-        stmt = stmt.on_conflict_do_nothing()
-        self.session.execute(stmt)
+        tags = set(tags)
+        existing_tag_objs = list(Tag.query.filter(Tag.name.in_(tags)))
+        existing_tags = {tag.name for tag in existing_tag_objs}
+        missing_tags = [Tag(name=name) for name in tags - existing_tags]
+        for tag in missing_tags:
+            self.session.add(tag)
+
+        return missing_tags + existing_tag_objs
