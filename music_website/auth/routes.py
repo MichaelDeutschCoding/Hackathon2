@@ -5,6 +5,7 @@ from music_website.auth.forms import LoginForm, RegisterForm
 from music_website import db
 from music_website.auth import login_manager
 from music_website.auth.models import User
+from music_website.auth.repositories import UserRepository
 
 auth_routes = Blueprint('auth', __name__, 'templates/')
 
@@ -30,27 +31,21 @@ def login():
     return render_template('login.html', form=form)
 
 
-@auth_routes.route('/sign-up', methods=['GET', 'POST'])
+@auth_routes.route('/register', methods=['GET', 'POST'])
 def signup():
     form = RegisterForm()
 
     if form.validate_on_submit():
-        hashed_password = generate_password_hash(form.password.data, method='sha256')
-        # noinspection PyArgumentList
-        new_user = User(username=form.username.data,
-                        email=form.email.data,
-                        password=hashed_password,
-                        first_name=form.first_name.data,
-                        last_name=form.last_name.data
-                        )
-        db.session.add(new_user)
-        db.session.commit()
-
+        repo = UserRepository()
+        repo.register(form.username.data,
+                      form.email.data,
+                      form.password.data,
+                      form.first_name.data,
+                      form.last_name.data)
+        # should redirect to dashboard
         return '<h1>New user has been created!</h1>'
 
-    return render_template('signup.html', form=form)
-
-
+    return render_template('register.html', register_form=form)
 
 
 @auth_routes.route('/logout')
