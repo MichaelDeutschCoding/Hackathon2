@@ -17,16 +17,19 @@ def load_user(user_id):
 
 @auth_routes.route('/login', methods=['GET', 'POST'])
 def login():
-    form = LoginForm(request.form)
+    form = LoginForm()
 
     if form.validate_on_submit():
         user = User.query.filter_by(username=form.username.data).first()
         if user:
-            if check_password_hash(user.password, form.password.data):
+            print(user.password_hashed, form.password.data)
+            if check_password_hash(user.password_hashed, form.password.data):
                 login_user(user, remember=form.remember.data)
                 return redirect(url_for('music.dashboard'))
 
         return '<h1>Invalid username or password</h1>'
+    else:
+        print(form.errors)
 
     return render_template('login.html', login_form=form)
 
@@ -37,11 +40,13 @@ def signup():
 
     if form.validate_on_submit():
         repo = UserRepository()
-        repo.register(form.username.data,
+        print(form.password.data)
+        user = repo.register(form.username.data,
                       form.email.data,
-                      form.password.data,
+                      generate_password_hash(form.password.data),
                       form.first_name.data,
                       form.last_name.data)
+        login_user(user)
         return redirect(url_for('music.dashboard'))
     else:
         print(form.errors)

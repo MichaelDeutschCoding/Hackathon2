@@ -14,9 +14,10 @@ class UserRepository:
         # noinspection PyArgumentList
         user = User(username=username,
                     email=email,
-                    password_hashed=hashlib.sha256(password.encode('utf-8')).digest(),
+                    password_hashed=password,
                     first_name=first_name,
                     last_name=last_name,
                     )
         db.session.add(user)
         db.session.commit()
+        return user
