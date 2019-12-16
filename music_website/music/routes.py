@@ -20,25 +20,24 @@ def dashboard():
 @music_routes.route('/upload', methods=['GET', 'POST'])
 # @login_required
 def add_sample():
-    user = User.query.filter_by(id=5).first()
+    user = User.query.filter_by(id=1).first()
     login_user(user)
 
     form = AddSampleForm()
     if form.validate_on_submit():
-
         with session_scope() as session:
+            tag_repo = TagRepository(session)
+            tags = tag_repo.add_tags(form.tags.data)
+
             sample_repo = SampleRepository(session)
-            print(current_user.id)
             sample_repo.add_new(
                 form.title.data,
                 form.path.data,
                 form.description.data,
-                form.tags.data,
+                tags,
                 current_user
             )
 
-            tag_repo = TagRepository(session)
-            tag_repo.add_tags(form.tags.data)
-        return redirect(url_for('dashboard'))
+        return redirect(url_for('music.dashboard'))
 
     return render_template('upload.html', form=form)
