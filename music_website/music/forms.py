@@ -25,3 +25,7 @@ class AddSampleForm(FlaskForm):
 
 class WriteCommentForm(FlaskForm):
     text = StringField('Add a comment', validators=[InputRequired(), Length(max=256)])
+
+
+class SearchByTagForm(FlaskForm):
+    search = StringField('Search')

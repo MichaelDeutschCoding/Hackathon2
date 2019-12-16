@@ -1,28 +1,8 @@
 {% extends 'base.html' %}
 
-{% block page_name%}Dashboard{% endblock %}
-
 {% block content %}
-{% with messages = get_flashed_messages() %}
-  {% if messages %}
-    {% for message in messages %}
-<h5 style="text-align: center;"><strong>Error:</strong> {{ message }}</h5>
-    {% endfor %}
-    </ul>
-  {% endif %}
-{% endwith %}
 
-
-
-<a href="{{url_for('music.add_sample')}}">Upload New Sample</a>
-<form method="POST">
-    {{ search_form.hidden_tag() }}
-    {{ search_form.search }}
-    <button class="btn btn-lg btn-primary btn-block" type="submit">Search</button>
-
-</form>
-
-
+<a href="{{url_for('music.dashboard')}}">Back to Dashboard</a>
 
 <div class="container music-feed">
     {% for sample in sample_list %}
