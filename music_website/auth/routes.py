@@ -14,6 +14,7 @@ def load_user(user_id):
     return User.query.get(int(user_id))
 
 
+
 @auth_routes.route('/login', methods=['GET', 'POST'])
 def login():
     form = LoginForm()
@@ -45,12 +46,6 @@ def signup():
         return '<h1>New user has been created!</h1>'
 
     return render_template('register.html', register_form=form)
-
-
-@auth_routes.route('/dashboard')
-@login_required
-def dashboard():
-    return render_template('dashboard.html')
 
 
 @auth_routes.route('/logout')
