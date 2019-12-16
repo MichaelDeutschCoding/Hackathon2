@@ -6,7 +6,7 @@ Login
 
 {% block link %}
 {{super()}}
-<link rel="stylesheet" href="{{url_for('.static', filename='signin.css')}}">
+<link rel="stylesheet" href="../static/css/login.css">
 {% endblock %}
 
 {% block content %}
@@ -17,8 +17,9 @@ Login
         {{ login_form.hidden_tag() }}
         {{ login_form.username }}
         {{ login_form.password }}
-        {{ login_form.remember }}
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+          {{login_form.rememberme}}
+
+        <button class="btn btn-lg btn-primary btn-block btn_sign" type="submit">Sign in</button>
       </form>
 
     </div> <!-- /container -->

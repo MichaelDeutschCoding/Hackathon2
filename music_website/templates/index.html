@@ -5,15 +5,13 @@
 {% block link %}<link rel="stylesheet" href="../static/css/style.css">{% endblock %}
 
 {% block content %}
+ <div class="container hero">
 
-    <div class="text_image">
-        <img class="back" src="../static/images/empty1.jpg" alt="">
         <img class="logo" src="../static/images/oie_fg5FcALU9BO9.png" alt="">
-        <div class="sign_box">
-            <form class="form-inline my-2 my-lg-0" method="get" action="register.html">
-            <button id="button_sign" class="btn btn-outline-warning my-2 my-sm-0" type="submit">Sign Up</button>
-            </form>
-            <button id="button_log" class="btn btn-outline-warning my-2 my-sm-0" type="submit">Log In</button>
-        </div>
-    </div>
+
+        <a id="btnsign" class="btn btn-outline-warning my-2 my-sm-0" href="/register" >Sign Up</a>
+        <a id="btnlog" href="/login" class="btn btn-outline-warning my-2 my-sm-0">Log In</a>
+
+
+</div>
 {% endblock %}

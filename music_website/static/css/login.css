@@ -1,0 +1,27 @@
+
+
+.container{
+    display: flex;
+    justify-content: center;
+
+    margin-top: 15%;
+    border: yellow solid 2px;
+    height: 450px;
+}
+h2{
+    text-align: center;
+    border: solid 2px black;
+}
+.form-signin{
+    border: 2px solid green;
+    height: 300px;
+
+
+}
+.btn_sign{
+    background-color: #ffc107;
+    color: black;
+
+
+
+}
