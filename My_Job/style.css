@@ -9,21 +9,15 @@ body{
     font: 35px;
     font-family: 'Londrina Solid', cursive;
 }
-
-
 .nav-link{
     color: #ffc107 !important;
-
 }
-
-
 .back {
     max-width:100%;
     height:auto;
     opacity: 0.8777;
     z-index: -1;
     position: relative;
-    
 }
 .logo{
     position: absolute;
@@ -34,7 +28,6 @@ body{
     width: 600px;
     height: 600px;
     text-align: center;
-    
 }
 #button_sign{
     position: absolute;
@@ -43,7 +36,6 @@ body{
     top: 675px; 
     left: 43%; 
     text-align: center  ;
-
 }
 #button_log{
     position: absolute;
