@@ -51,7 +51,7 @@ def search(tag):
         flash(f"No samples found under the tag: {tag}")
         return redirect(url_for('music.dashboard'))
     sample_list = tag_obj.samples
-    return render_template('search.html', sample_list=sample_list)
+    return render_template('search.html', tag=tag, sample_list=sample_list)
 
 
 @music_routes.route('/sample/<sample_id>')

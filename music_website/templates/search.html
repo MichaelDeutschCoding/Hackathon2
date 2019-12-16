@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 
+{% block page_name %}{{ tag }}{% endblock %}
+
 {% block content %}
 
 <a href="{{url_for('music.dashboard')}}">Back to Dashboard</a>
