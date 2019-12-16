@@ -1,0 +1,59 @@
+body,html{
+    height: 100%;
+    background-color: black;
+ 
+    
+    
+}
+.img{
+    margin-left: 25%;
+
+    
+
+
+}
+.navbar{
+    color:#ffffff ;
+    background-color: rgba(0, 0, 0, 0.897) ;
+    font: 35px;
+    font-family: 'Londrina Solid', cursive;
+}
+
+.nav-link{
+    color: #ffc107 !important;
+
+}
+
+.centered-form{
+   margin-top: 25%;
+
+   width: 600px;
+   margin-left: 20%;
+
+  
+}
+
+.centered-form .panel{
+
+width:600px;
+margin: 0;
+   
+	
+}
+.container{
+    position: relative;
+    color: #ffc107;
+    text-align: center;
+    font-family: 'Londrina Solid', cursive;
+}
+.reg_btn{
+    background-color: #ffc107;
+    color: black;
+    border: 2px solid rgba(0, 0, 0, 0.479);
+    font-family: 'Londrina Solid', cursive;
+}
+.reg_btn:hover{
+    background-color: black;
+    color:#ffc107 ;
+    border: 2px solid #ffc107;
+}
