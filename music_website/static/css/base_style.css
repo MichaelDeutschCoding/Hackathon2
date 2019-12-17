@@ -1,0 +1,9 @@
+.navbar{
+    color:#ffffff;
+    background-color: rgba(0, 0, 0, 0.897);
+    font: 35px;
+    font-family: 'Londrina Solid', cursive;
+}
+.nav-link{
+    color: #ffc107 !important;
+}

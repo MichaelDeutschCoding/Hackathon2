@@ -1,6 +1,9 @@
 body{
-    background-color: rgb(86, 87, 87);
+    background-image: url("../images/empty1.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
 }
+
 .navbar{
     color:#ffffff;
     background-color: rgba(0, 0, 0, 0.897);
@@ -23,25 +26,18 @@ body{
     z-index: 1;
     font: 76px;
     top: 100px; 
-    left: 50%;
+    left: 28%;
     width: 600px;
     height: 600px;
     text-align: center;
 }
-#button_sign{
-    z-index: 1;
-    font: 76px;
-    top: 675px; 
-    left: 37%;
-    text-align: center  ;
-}
-#button_log{
-    z-index: 1;
-    font: 76px;
-    top: 675px; 
-    left: 48%;
-    text-align: center  ;
-    width: 83px;
-    height: 38px;
-}
 
+#btnlog{
+    margin-top: 55% !important;
+    margin-left:20px;
+
+}
+#btnsign{
+    margin-top: 55% !important;
+    margin-left: 40%;
+}
