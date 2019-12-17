@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField
+from wtforms import StringField, TextAreaField
 from wtforms.validators import InputRequired, Length
 
 
@@ -24,7 +24,7 @@ class AddSampleForm(FlaskForm):
 
 
 class WriteCommentForm(FlaskForm):
-    text = StringField('Add a comment', validators=[InputRequired(), Length(max=256)])
+    text = TextAreaField('Add a comment', validators=[InputRequired(), Length(max=256)])
 
 
 class SearchByTagForm(FlaskForm):
