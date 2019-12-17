@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template, redirect, url_for, request, flash
-from flask_login import login_user, login_required, logout_user, current_user
+from flask_login import login_user, login_required, logout_user
 from werkzeug.security import generate_password_hash, check_password_hash
 from music_website.auth.forms import LoginForm, RegisterForm
 from music_website import db
@@ -53,3 +53,8 @@ def signup():
 def logout():
     logout_user()
     return redirect(url_for('main.index'))
+
+@login_manager.unauthorized_handler
+def unauthorized():
+    flash('You must be logged in to view that page.')
+    return redirect(url_for('auth.login'))
