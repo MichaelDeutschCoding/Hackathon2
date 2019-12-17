@@ -1,6 +1,10 @@
-{% extends 'base.html' %}
+{% extends 'base_inside.html' %}
 
 {% block page_name%}Dashboard{% endblock %}
+
+{% block link %}
+<link rel="stylesheet" href="../static/css/dashboard.css">
+{% endblock %}
 
 {% block content %}
 {% with messages = get_flashed_messages() %}
@@ -13,11 +17,10 @@
 
 
 
-<a href="{{url_for('music.add_sample')}}">Upload New Sample</a>
 <form method="POST">
     {{ search_form.hidden_tag() }}
     {{ search_form.search }}
-    <button class="btn btn-lg btn-primary btn-block" type="submit">Search</button>
+    <button class="btn btn-lg btn-primary btn-block search" type="submit">Search</button>
 
 </form>
 
