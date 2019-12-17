@@ -11,7 +11,7 @@ music_routes = Blueprint('music', __name__, 'templates/')
 
 
 @music_routes.route('/dashboard', methods=['GET', 'POST'])
-# @login_required
+@login_required
 def dashboard():
     search_form = SearchByTagForm()
     if search_form.validate_on_submit():
@@ -44,7 +44,7 @@ def add_sample():
     return render_template('upload.html', form=form)
 
 @music_routes.route('/search/<tag>')
-# @login_required
+@login_required
 def search(tag):
     tag_obj =Tag.query.filter(Tag.name ==tag).first()
     if not tag_obj:
@@ -55,7 +55,7 @@ def search(tag):
 
 
 @music_routes.route('/sample/<sample_id>')
-# @login_required
+@login_required
 def sample_page(sample_id):
     sample = Sample.query.filter_by(id=sample_id).first()
     if not sample:
