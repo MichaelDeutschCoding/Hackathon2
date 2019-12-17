@@ -1,5 +1,3 @@
-import hashlib
-
 from music_website import db
 from music_website.auth.models import User
 

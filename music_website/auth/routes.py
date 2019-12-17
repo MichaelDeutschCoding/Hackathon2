@@ -2,7 +2,6 @@ from flask import Blueprint, render_template, redirect, url_for, request, flash
 from flask_login import login_user, login_required, logout_user
 from werkzeug.security import generate_password_hash, check_password_hash
 from music_website.auth.forms import LoginForm, RegisterForm
-from music_website import db
 from music_website.auth import login_manager
 from music_website.auth.models import User
 from music_website.auth.repositories import UserRepository
@@ -34,7 +33,6 @@ def signup():
 
     if form.validate_on_submit():
         repo = UserRepository()
-        print(form.password.data)
         user = repo.register(form.username.data,
                       form.email.data,
                       generate_password_hash(form.password.data),
@@ -43,7 +41,7 @@ def signup():
         login_user(user)
         return redirect(url_for('music.dashboard'))
     else:
-        print(form.errors)
+        flash(form.errors)
 
     return render_template('register.html', register_form=form)
 
