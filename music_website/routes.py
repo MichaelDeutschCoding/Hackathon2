@@ -12,7 +12,6 @@ login_manager.login_view = 'login'
 def index():
     return render_template('index.html')
 
-
-@main_routes.route('/testplayback')
-def test_playback():
-    return render_template('playback.html')
+@main_routes.route('/about')
+def about():
+    return render_template('about.html')

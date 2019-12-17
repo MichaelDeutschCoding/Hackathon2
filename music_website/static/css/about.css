@@ -1,0 +1,36 @@
+body{
+    background-image: url("../images/backdoor.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    
+}
+
+
+.navbar{
+    color:#ffffff ;
+    background-color: rgba(0, 0, 0, 0.966) ;
+    font: 35px;
+    font-family: 'Londrina Solid', cursive;
+}
+
+.nav-link{
+    color: #ffc107 !important;
+    
+}   
+.about{
+    color: white; !important;
+}
+
+p{
+    color:white;
+}
+h3{
+    color: white;
+}
+.aboutus{
+    width:45%;
+    height: 25%;
+    background-color: rgba(0, 0, 0, 0.541);
+    margin-top: 5%;
+    margin-left: 10%;
+}

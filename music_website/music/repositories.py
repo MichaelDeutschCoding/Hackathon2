@@ -1,4 +1,6 @@
-from music_website.music.models import Sample, Tag
+from music_website.music.models import Sample, Tag, Comment
+from music_website import db
+
 
 class SampleRepository:
     def __init__(self, session):
@@ -28,3 +30,14 @@ class TagRepository:
             self.session.add(tag)
 
         return missing_tags + existing_tag_objs
+
+class CommentRepository:
+    def add_comment(self, sample_id, current_user, text):
+        comment = Comment(
+            sample_id=sample_id,
+            author_id=current_user.id,
+            text=text
+        )
+
+        db.session.add(comment)
+        db.session.commit()

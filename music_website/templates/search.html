@@ -1,0 +1,28 @@
+{% extends 'base_inside.html' %}
+
+{% block page_name %}{{ tag }}{% endblock %}
+
+{% block content %}
+
+<a href="{{url_for('music.dashboard')}}">Back to Dashboard</a>
+
+<div class="container music-feed">
+    {% for sample in sample_list %}
+
+    <div class="card" style="width: 80%;">
+      <h5 class="card-header">{{ sample.title }}</h5>
+      <div class="card-body">
+        <h5 class="card-title">Description: {{ sample.description }}</h5>
+          <p class="card-text">ID Num: {{ sample.id }}</p>
+        <p class="card-text"> TAGS: {{ sample.tags|join(', ', attribute='name') }}</p>
+          <audio controls style="width: 600px" class="card-text">
+            <source src="{{ sample.path }}" type="audio/wav">
+        </audio><br>
+        <a href="#" class="btn btn-primary">{{ sample.path }} </a>
+      </div>
+    </div>
+    <br>
+    {% endfor %}
+</div>
+
+{% endblock %}

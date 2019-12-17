@@ -24,6 +24,10 @@ class Tag(db.Model):
     name = db.Column(db.String(32), primary_key=True)
     samples = db.relationship('Sample', secondary=sample_tags)
 
+    def __repr__(self):
+        return self.name
+
+
 class Comment(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     sample_id = db.Column(db.Integer, db.ForeignKey('sample.id'))

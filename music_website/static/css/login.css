@@ -1,8 +1,7 @@
 body{
-    background-image:  url("../images/Back.jpg");
-    background-repeat: no-repeat;
+    background-image: url("../images/backdoor.jpg");
     background-size: cover;
-
+    background-repeat: no-repeat;
 }
 
 .container{
@@ -10,8 +9,8 @@ body{
     justify-content: center;
     margin-top: 20%;
     padding-left: 15%;
-
 }
+
 h2{
     text-align: center;
     color: white;
@@ -21,6 +20,7 @@ h2{
  height: 40%;
  margin-left: 15%;
 }
+
 .btn_sign{
     background-color: #ffc107;
     color: black;
@@ -30,5 +30,4 @@ h2{
     background-color: black;
     color: #ffc107;
     border: 1px solid #ffc107;
-
 }
