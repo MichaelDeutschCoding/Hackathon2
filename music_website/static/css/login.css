@@ -5,26 +5,29 @@ body{
 }
 
 .container{
-    display: flex;
+    display: inline-block;
     justify-content: center;
-    margin-top: 15%;
-    height: 450px;
+    margin-top: 20%;
+    padding-left: 15%;
 }
 
 h2{
     text-align: center;
-    border: solid 2px white;
-}
-
-.form-signin-heading{
     color: white;
+    font-family: 'Londrina Solid', cursive;
 }
-
 .form-signin{
-    height: 300px;
+ height: 40%;
+ margin-left: 15%;
 }
 
 .btn_sign{
     background-color: #ffc107;
     color: black;
+    border: 1px solid black;
+}
+.btn_sign:hover{
+    background-color: black;
+    color: #ffc107;
+    border: 1px solid #ffc107;
 }
